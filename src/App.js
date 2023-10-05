@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Login } from "./Pages/Login";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { RecoilRoot } from "recoil";
+import { Home } from "./Pages/Home";
+import { Register } from "./Pages/Register";
+import { Admin } from "./Pages/Admin";
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/login",
+      element: <Login />,
+    },
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path:"/register",
+      element:<Register />
+    },
+    {
+      path:"/admin",
+      element:<Admin />
+    }
+  ]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <RecoilRoot>
+      <RouterProvider router={router} />
+    </RecoilRoot>
   );
 }
 
